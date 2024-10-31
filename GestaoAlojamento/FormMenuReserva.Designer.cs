@@ -1,6 +1,6 @@
 ﻿namespace GestaoAlojamento
 {
-    partial class FormMenuAlojamentos
+    partial class FormMenuReserva
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Franklin Gothic Medium Cond", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(315, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(421, 47);
-            label1.TabIndex = 0;
-            label1.Text = "Escolha a opção pretendida";
             // 
             // button1
             // 
@@ -52,7 +42,7 @@
             button1.Name = "button1";
             button1.Size = new Size(220, 46);
             button1.TabIndex = 1;
-            button1.Text = "Criar Alojamento";
+            button1.Text = "Criar Reserva";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -62,7 +52,7 @@
             button2.Name = "button2";
             button2.Size = new Size(220, 46);
             button2.TabIndex = 2;
-            button2.Text = "Editar Alojamento";
+            button2.Text = "Editar Reserva";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -72,7 +62,7 @@
             button3.Name = "button3";
             button3.Size = new Size(220, 46);
             button3.TabIndex = 3;
-            button3.Text = "Eliminar Alojamento";
+            button3.Text = "Eliminar Reserva";
             button3.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -82,31 +72,43 @@
             button4.Name = "button4";
             button4.Size = new Size(220, 46);
             button4.TabIndex = 4;
-            button4.Text = "Listar Alojamento";
+            button4.Text = "Listar Reserva";
             button4.UseVisualStyleBackColor = true;
             // 
-            // FormMenuAlojamentos
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.Control;
+            label1.Font = new Font("Franklin Gothic Medium Cond", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(315, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(421, 47);
+            label1.TabIndex = 0;
+            label1.Text = "Escolha a opção pretendida";
+            label1.Click += label1_Click;
+            // 
+            // FormMenuReserva
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(1051, 753);
+            Controls.Add(label1);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(label1);
-            Name = "FormMenuAlojamentos";
-            Text = "Menu Alojamentos";
+            Name = "FormMenuReserva";
+            Text = "Menu Reserva";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private Button button1;
         private Button button2;
         private Button button3;
         private Button button4;
+        private Label label1;
     }
 }

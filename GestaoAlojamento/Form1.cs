@@ -17,7 +17,7 @@ namespace GestaoAlojamento
 
             // Define o form como filho do panel
             formFilho.TopLevel = false;
-            formFilho.FormBorderStyle = FormBorderStyle.Sizable; 
+            formFilho.FormBorderStyle = FormBorderStyle.Sizable;
             formFilho.Dock = DockStyle.Fill;
 
             // Adiciona o form ao panel
@@ -55,6 +55,17 @@ namespace GestaoAlojamento
         {
             FormMenuAlojamentos formMenuAlojamentos = new FormMenuAlojamentos();
             AbrirFormNoPanel(formMenuAlojamentos);
+        }
+
+        private void panelConteudo_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonReservas_Click(object sender, EventArgs e)
+        {
+            FormMenuReserva formMenuReserva = new FormMenuReserva();
+            AbrirFormNoPanel(formMenuReserva);
         }
     }
 }

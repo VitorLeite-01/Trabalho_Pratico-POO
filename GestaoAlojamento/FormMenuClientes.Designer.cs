@@ -39,7 +39,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Medium Cond", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(170, 38);
+            label1.Location = new Point(315, 34);
             label1.Name = "label1";
             label1.Size = new Size(421, 47);
             label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // buttonNovoCliente
             // 
             buttonNovoCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonNovoCliente.Location = new Point(276, 141);
+            buttonNovoCliente.Location = new Point(415, 160);
             buttonNovoCliente.Name = "buttonNovoCliente";
             buttonNovoCliente.Size = new Size(220, 46);
             buttonNovoCliente.TabIndex = 1;
@@ -59,7 +59,7 @@
             // buttonEditarCliente
             // 
             buttonEditarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEditarCliente.Location = new Point(276, 263);
+            buttonEditarCliente.Location = new Point(415, 320);
             buttonEditarCliente.Name = "buttonEditarCliente";
             buttonEditarCliente.Size = new Size(220, 46);
             buttonEditarCliente.TabIndex = 2;
@@ -69,7 +69,7 @@
             // buttonEliminarCliente
             // 
             buttonEliminarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEliminarCliente.Location = new Point(276, 389);
+            buttonEliminarCliente.Location = new Point(415, 480);
             buttonEliminarCliente.Name = "buttonEliminarCliente";
             buttonEliminarCliente.Size = new Size(220, 46);
             buttonEliminarCliente.TabIndex = 3;
@@ -79,7 +79,7 @@
             // buttonListarCliente
             // 
             buttonListarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonListarCliente.Location = new Point(276, 508);
+            buttonListarCliente.Location = new Point(415, 640);
             buttonListarCliente.Name = "buttonListarCliente";
             buttonListarCliente.Size = new Size(220, 46);
             buttonListarCliente.TabIndex = 4;
@@ -91,7 +91,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(772, 578);
+            ClientSize = new Size(1051, 753);
             Controls.Add(buttonListarCliente);
             Controls.Add(buttonEliminarCliente);
             Controls.Add(buttonEditarCliente);
