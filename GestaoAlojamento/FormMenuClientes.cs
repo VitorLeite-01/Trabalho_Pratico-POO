@@ -26,5 +26,10 @@ namespace GestaoAlojamento
         {
 
         }
+
+        private void buttonCriarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

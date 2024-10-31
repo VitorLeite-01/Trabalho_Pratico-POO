@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            buttonNovoCliente = new Button();
+            buttonCriarCliente = new Button();
             buttonEditarCliente = new Button();
             buttonEliminarCliente = new Button();
             buttonListarCliente = new Button();
@@ -46,15 +46,16 @@
             label1.Text = "Escolha a opção pretendida";
             label1.Click += label1_Click;
             // 
-            // buttonNovoCliente
+            // buttonCriarCliente
             // 
-            buttonNovoCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonNovoCliente.Location = new Point(415, 160);
-            buttonNovoCliente.Name = "buttonNovoCliente";
-            buttonNovoCliente.Size = new Size(220, 46);
-            buttonNovoCliente.TabIndex = 1;
-            buttonNovoCliente.Text = "Criar Cliente";
-            buttonNovoCliente.UseVisualStyleBackColor = true;
+            buttonCriarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCriarCliente.Location = new Point(415, 160);
+            buttonCriarCliente.Name = "buttonCriarCliente";
+            buttonCriarCliente.Size = new Size(220, 46);
+            buttonCriarCliente.TabIndex = 1;
+            buttonCriarCliente.Text = "Criar Cliente";
+            buttonCriarCliente.UseVisualStyleBackColor = true;
+            buttonCriarCliente.Click += buttonCriarCliente_Click;
             // 
             // buttonEditarCliente
             // 
@@ -95,7 +96,7 @@
             Controls.Add(buttonListarCliente);
             Controls.Add(buttonEliminarCliente);
             Controls.Add(buttonEditarCliente);
-            Controls.Add(buttonNovoCliente);
+            Controls.Add(buttonCriarCliente);
             Controls.Add(label1);
             Name = "FormMenuClientes";
             Text = "Menu Clientes";
@@ -108,7 +109,7 @@
         #endregion
 
         private Label label1;
-        private Button buttonNovoCliente;
+        private Button buttonCriarCliente;
         private Button buttonEditarCliente;
         private Button buttonEliminarCliente;
         private Button buttonListarCliente;

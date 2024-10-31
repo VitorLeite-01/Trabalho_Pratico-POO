@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            buttonCriarAlojamento = new Button();
+            buttonEditarAlojamento = new Button();
+            buttonEliminarAlojamento = new Button();
+            buttonListarAlojamento = new Button();
             SuspendLayout();
             // 
             // label1
@@ -45,55 +45,55 @@
             label1.TabIndex = 0;
             label1.Text = "Escolha a opção pretendida";
             // 
-            // button1
+            // buttonCriarAlojamento
             // 
-            button1.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(415, 160);
-            button1.Name = "button1";
-            button1.Size = new Size(220, 46);
-            button1.TabIndex = 1;
-            button1.Text = "Criar Alojamento";
-            button1.UseVisualStyleBackColor = true;
+            buttonCriarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCriarAlojamento.Location = new Point(415, 160);
+            buttonCriarAlojamento.Name = "buttonCriarAlojamento";
+            buttonCriarAlojamento.Size = new Size(220, 46);
+            buttonCriarAlojamento.TabIndex = 1;
+            buttonCriarAlojamento.Text = "Criar Alojamento";
+            buttonCriarAlojamento.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonEditarAlojamento
             // 
-            button2.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(415, 320);
-            button2.Name = "button2";
-            button2.Size = new Size(220, 46);
-            button2.TabIndex = 2;
-            button2.Text = "Editar Alojamento";
-            button2.UseVisualStyleBackColor = true;
+            buttonEditarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonEditarAlojamento.Location = new Point(415, 320);
+            buttonEditarAlojamento.Name = "buttonEditarAlojamento";
+            buttonEditarAlojamento.Size = new Size(220, 46);
+            buttonEditarAlojamento.TabIndex = 2;
+            buttonEditarAlojamento.Text = "Editar Alojamento";
+            buttonEditarAlojamento.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonEliminarAlojamento
             // 
-            button3.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(415, 480);
-            button3.Name = "button3";
-            button3.Size = new Size(220, 46);
-            button3.TabIndex = 3;
-            button3.Text = "Eliminar Alojamento";
-            button3.UseVisualStyleBackColor = true;
+            buttonEliminarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonEliminarAlojamento.Location = new Point(415, 480);
+            buttonEliminarAlojamento.Name = "buttonEliminarAlojamento";
+            buttonEliminarAlojamento.Size = new Size(220, 46);
+            buttonEliminarAlojamento.TabIndex = 3;
+            buttonEliminarAlojamento.Text = "Eliminar Alojamento";
+            buttonEliminarAlojamento.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonListarAlojamento
             // 
-            button4.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(415, 640);
-            button4.Name = "button4";
-            button4.Size = new Size(220, 46);
-            button4.TabIndex = 4;
-            button4.Text = "Listar Alojamento";
-            button4.UseVisualStyleBackColor = true;
+            buttonListarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonListarAlojamento.Location = new Point(415, 640);
+            buttonListarAlojamento.Name = "buttonListarAlojamento";
+            buttonListarAlojamento.Size = new Size(220, 46);
+            buttonListarAlojamento.TabIndex = 4;
+            buttonListarAlojamento.Text = "Listar Alojamento";
+            buttonListarAlojamento.UseVisualStyleBackColor = true;
             // 
             // FormMenuAlojamentos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1051, 753);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonListarAlojamento);
+            Controls.Add(buttonEliminarAlojamento);
+            Controls.Add(buttonEditarAlojamento);
+            Controls.Add(buttonCriarAlojamento);
             Controls.Add(label1);
             Name = "FormMenuAlojamentos";
             Text = "Menu Alojamentos";
@@ -104,9 +104,9 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button buttonCriarAlojamento;
+        private Button buttonEditarAlojamento;
+        private Button buttonEliminarAlojamento;
+        private Button buttonListarAlojamento;
     }
 }

@@ -21,5 +21,10 @@ namespace GestaoAlojamento
         {
 
         }
+
+        private void buttonCriarReserva_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

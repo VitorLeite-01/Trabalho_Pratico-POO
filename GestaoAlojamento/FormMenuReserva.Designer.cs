@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            buttonCriarReserva = new Button();
+            buttonEditarReserva = new Button();
+            buttonEliminarReserva = new Button();
+            buttonListarReserva = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // buttonCriarReserva
             // 
-            button1.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(415, 160);
-            button1.Name = "button1";
-            button1.Size = new Size(220, 46);
-            button1.TabIndex = 1;
-            button1.Text = "Criar Reserva";
-            button1.UseVisualStyleBackColor = true;
+            buttonCriarReserva.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCriarReserva.Location = new Point(415, 160);
+            buttonCriarReserva.Name = "buttonCriarReserva";
+            buttonCriarReserva.Size = new Size(220, 46);
+            buttonCriarReserva.TabIndex = 1;
+            buttonCriarReserva.Text = "Criar Reserva";
+            buttonCriarReserva.UseVisualStyleBackColor = true;
+            buttonCriarReserva.Click += buttonCriarReserva_Click;
             // 
-            // button2
+            // buttonEditarReserva
             // 
-            button2.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(415, 320);
-            button2.Name = "button2";
-            button2.Size = new Size(220, 46);
-            button2.TabIndex = 2;
-            button2.Text = "Editar Reserva";
-            button2.UseVisualStyleBackColor = true;
+            buttonEditarReserva.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonEditarReserva.Location = new Point(415, 320);
+            buttonEditarReserva.Name = "buttonEditarReserva";
+            buttonEditarReserva.Size = new Size(220, 46);
+            buttonEditarReserva.TabIndex = 2;
+            buttonEditarReserva.Text = "Editar Reserva";
+            buttonEditarReserva.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonEliminarReserva
             // 
-            button3.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(415, 480);
-            button3.Name = "button3";
-            button3.Size = new Size(220, 46);
-            button3.TabIndex = 3;
-            button3.Text = "Eliminar Reserva";
-            button3.UseVisualStyleBackColor = true;
+            buttonEliminarReserva.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonEliminarReserva.Location = new Point(415, 480);
+            buttonEliminarReserva.Name = "buttonEliminarReserva";
+            buttonEliminarReserva.Size = new Size(220, 46);
+            buttonEliminarReserva.TabIndex = 3;
+            buttonEliminarReserva.Text = "Eliminar Reserva";
+            buttonEliminarReserva.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonListarReserva
             // 
-            button4.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(415, 640);
-            button4.Name = "button4";
-            button4.Size = new Size(220, 46);
-            button4.TabIndex = 4;
-            button4.Text = "Listar Reserva";
-            button4.UseVisualStyleBackColor = true;
+            buttonListarReserva.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonListarReserva.Location = new Point(415, 640);
+            buttonListarReserva.Name = "buttonListarReserva";
+            buttonListarReserva.Size = new Size(220, 46);
+            buttonListarReserva.TabIndex = 4;
+            buttonListarReserva.Text = "Listar Reserva";
+            buttonListarReserva.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -94,10 +95,10 @@
             BackColor = SystemColors.Control;
             ClientSize = new Size(1051, 753);
             Controls.Add(label1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonListarReserva);
+            Controls.Add(buttonEliminarReserva);
+            Controls.Add(buttonEditarReserva);
+            Controls.Add(buttonCriarReserva);
             Name = "FormMenuReserva";
             Text = "Menu Reserva";
             ResumeLayout(false);
@@ -105,10 +106,10 @@
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button buttonCriarReserva;
+        private Button buttonEditarReserva;
+        private Button buttonEliminarReserva;
+        private Button buttonListarReserva;
         private Label label1;
     }
 }
