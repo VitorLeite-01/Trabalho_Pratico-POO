@@ -20,9 +20,8 @@ namespace GestaoAlojamentoDLL
         public Reserva() { }
 
         // Construtor com parâmetros
-        public Reserva(int id, Cliente cliente, Alojamento alojamento, DateTime dataCheckIn, DateTime dataCheckOut)
+        public Reserva(Cliente cliente, Alojamento alojamento, DateTime dataCheckIn, DateTime dataCheckOut)
         {
-            Id = id;
             Cliente = cliente;
             Alojamento = alojamento;
             DataCheckIn = dataCheckIn;

@@ -20,9 +20,8 @@ namespace GestaoAlojamentoDLL
         public Alojamento() { }
 
         // Construtor com parâmetros
-        public Alojamento(int id, int numeroAlojamento, string descricao, decimal precoPorNoite, EstadoAlojamento estado)
+        public Alojamento(int numeroAlojamento, string descricao, decimal precoPorNoite, EstadoAlojamento estado)
         {
-            Id = id;
             NumeroAlojamento = numeroAlojamento;
             Descricao = descricao;
             PrecoPorNoite = precoPorNoite;

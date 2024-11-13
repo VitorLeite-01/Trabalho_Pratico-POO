@@ -33,23 +33,25 @@
             buttonEditarCliente = new Button();
             buttonEliminarCliente = new Button();
             buttonListarCliente = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Medium Cond", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(315, 34);
+            label1.Location = new Point(418, 9);
             label1.Name = "label1";
-            label1.Size = new Size(421, 47);
+            label1.Size = new Size(230, 47);
             label1.TabIndex = 0;
-            label1.Text = "Escolha a opção pretendida";
+            label1.Text = "Menu Clientes";
             label1.Click += label1_Click;
             // 
             // buttonCriarCliente
             // 
             buttonCriarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonCriarCliente.Location = new Point(415, 160);
+            buttonCriarCliente.Location = new Point(424, 160);
             buttonCriarCliente.Name = "buttonCriarCliente";
             buttonCriarCliente.Size = new Size(220, 46);
             buttonCriarCliente.TabIndex = 1;
@@ -60,7 +62,7 @@
             // buttonEditarCliente
             // 
             buttonEditarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEditarCliente.Location = new Point(415, 320);
+            buttonEditarCliente.Location = new Point(424, 320);
             buttonEditarCliente.Name = "buttonEditarCliente";
             buttonEditarCliente.Size = new Size(220, 46);
             buttonEditarCliente.TabIndex = 2;
@@ -70,7 +72,7 @@
             // buttonEliminarCliente
             // 
             buttonEliminarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEliminarCliente.Location = new Point(415, 480);
+            buttonEliminarCliente.Location = new Point(424, 480);
             buttonEliminarCliente.Name = "buttonEliminarCliente";
             buttonEliminarCliente.Size = new Size(220, 46);
             buttonEliminarCliente.TabIndex = 3;
@@ -80,30 +82,42 @@
             // buttonListarCliente
             // 
             buttonListarCliente.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonListarCliente.Location = new Point(415, 640);
+            buttonListarCliente.Location = new Point(424, 640);
             buttonListarCliente.Name = "buttonListarCliente";
             buttonListarCliente.Size = new Size(220, 46);
             buttonListarCliente.TabIndex = 4;
             buttonListarCliente.Text = "Listar Cliente";
             buttonListarCliente.UseVisualStyleBackColor = true;
+            buttonListarCliente.Click += buttonListarCliente_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.CornflowerBlue;
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1045, 66);
+            panel1.TabIndex = 5;
             // 
             // FormMenuClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1051, 753);
+            ClientSize = new Size(1069, 801);
+            Controls.Add(panel1);
             Controls.Add(buttonListarCliente);
             Controls.Add(buttonEliminarCliente);
             Controls.Add(buttonEditarCliente);
             Controls.Add(buttonCriarCliente);
-            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormMenuClientes";
             Text = "Menu Clientes";
             TransparencyKey = Color.Black;
             Load += FormMenuClientes_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -113,5 +127,6 @@
         private Button buttonEditarCliente;
         private Button buttonEliminarCliente;
         private Button buttonListarCliente;
+        private Panel panel1;
     }
 }

@@ -1,23 +1,25 @@
+using GestaoAlojamentoDLL;
+using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
 
 namespace GestaoAlojamento
 {
-    public partial class Form1 : Form
+    public partial class FormPrincipal : Form
     {
-        public Form1()
+        public FormPrincipal()
         {
             InitializeComponent();
         }
         public void AbrirFormNoPanel(Form formFilho)
         {
-            // Limpa qualquer controle existente dentro do panel
+            // Limpa qualquer controlo existente dentro do panel
             if (panelConteudo.Controls.Count > 0)
                 panelConteudo.Controls.RemoveAt(0);
 
             // Define o form como filho do panel
             formFilho.TopLevel = false;
-            formFilho.FormBorderStyle = FormBorderStyle.Sizable;
+            formFilho.FormBorderStyle = FormBorderStyle.None;
             formFilho.Dock = DockStyle.Fill;
 
             // Adiciona o form ao panel
@@ -27,6 +29,17 @@ namespace GestaoAlojamento
             // Exibe o form
             formFilho.BringToFront();
             formFilho.Show();
+        }
+        public List<Cliente> CarregarClientes()
+        {
+            string caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "clientes.json");
+
+            if (File.Exists(caminhoArquivo))
+            {
+                string json = File.ReadAllText(caminhoArquivo);
+                return JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
+            }
+            return new List<Cliente>();
         }
 
 
@@ -47,7 +60,7 @@ namespace GestaoAlojamento
 
         private void buttonClientes_Click(object sender, EventArgs e)
         {
-            FormMenuClientes formMenuClientes = new FormMenuClientes();
+            FormMenuClientes formMenuClientes = new FormMenuClientes(this);
             AbrirFormNoPanel(formMenuClientes);
         }
 

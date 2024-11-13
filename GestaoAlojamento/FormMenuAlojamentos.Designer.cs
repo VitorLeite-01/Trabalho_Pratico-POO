@@ -33,22 +33,24 @@
             buttonEditarAlojamento = new Button();
             buttonEliminarAlojamento = new Button();
             buttonListarAlojamento = new Button();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Medium Cond", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(315, 34);
+            label1.Location = new Point(372, 10);
             label1.Name = "label1";
-            label1.Size = new Size(421, 47);
+            label1.Size = new Size(293, 47);
             label1.TabIndex = 0;
-            label1.Text = "Escolha a opção pretendida";
+            label1.Text = "Menu Alojamentos";
             // 
             // buttonCriarAlojamento
             // 
             buttonCriarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonCriarAlojamento.Location = new Point(415, 160);
+            buttonCriarAlojamento.Location = new Point(424, 160);
             buttonCriarAlojamento.Name = "buttonCriarAlojamento";
             buttonCriarAlojamento.Size = new Size(220, 46);
             buttonCriarAlojamento.TabIndex = 1;
@@ -58,7 +60,7 @@
             // buttonEditarAlojamento
             // 
             buttonEditarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEditarAlojamento.Location = new Point(415, 320);
+            buttonEditarAlojamento.Location = new Point(424, 320);
             buttonEditarAlojamento.Name = "buttonEditarAlojamento";
             buttonEditarAlojamento.Size = new Size(220, 46);
             buttonEditarAlojamento.TabIndex = 2;
@@ -68,7 +70,7 @@
             // buttonEliminarAlojamento
             // 
             buttonEliminarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEliminarAlojamento.Location = new Point(415, 480);
+            buttonEliminarAlojamento.Location = new Point(424, 480);
             buttonEliminarAlojamento.Name = "buttonEliminarAlojamento";
             buttonEliminarAlojamento.Size = new Size(220, 46);
             buttonEliminarAlojamento.TabIndex = 3;
@@ -78,27 +80,38 @@
             // buttonListarAlojamento
             // 
             buttonListarAlojamento.Font = new Font("Franklin Gothic Medium Cond", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonListarAlojamento.Location = new Point(415, 640);
+            buttonListarAlojamento.Location = new Point(424, 640);
             buttonListarAlojamento.Name = "buttonListarAlojamento";
             buttonListarAlojamento.Size = new Size(220, 46);
             buttonListarAlojamento.TabIndex = 4;
             buttonListarAlojamento.Text = "Listar Alojamento";
             buttonListarAlojamento.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SandyBrown;
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1045, 66);
+            panel1.TabIndex = 5;
+            // 
             // FormMenuAlojamentos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1051, 753);
+            ClientSize = new Size(1069, 801);
+            Controls.Add(panel1);
             Controls.Add(buttonListarAlojamento);
             Controls.Add(buttonEliminarAlojamento);
             Controls.Add(buttonEditarAlojamento);
             Controls.Add(buttonCriarAlojamento);
-            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormMenuAlojamentos";
             Text = "Menu Alojamentos";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -108,5 +121,6 @@
         private Button buttonEditarAlojamento;
         private Button buttonEliminarAlojamento;
         private Button buttonListarAlojamento;
+        private Panel panel1;
     }
 }

@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace GestaoAlojamentoDLL
 {
-    public class CheckIn 
+    public class CheckOut 
     {
-        #region Public Properties
+        #region Properties
+        // Propriedades principais
         public Reserva Reserva { get; set; }
-        public DateTime DataCheckInRealizado { get; set; }
+        public DateTime DataCheckOutRealizado { get; set; }
         #endregion
 
         #region Constructors
         // Construtor sem parâmetros
-        public CheckIn() { }
+        public CheckOut() { }
 
         // Construtor com parâmetros
-        public CheckIn(Reserva reserva, DateTime dataCheckInRealizado)
+        public CheckOut(Reserva reserva, DateTime dataCheckOut)
         {
             Reserva = reserva;
-            DataCheckInRealizado = dataCheckInRealizado;
+            DataCheckOutRealizado = dataCheckOut;
         }
         #endregion
     }
