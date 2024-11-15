@@ -26,5 +26,20 @@ namespace GestaoAlojamento
         {
 
         }
+
+        private void buttonEditarReserva_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminarReserva_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonListarReserva_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

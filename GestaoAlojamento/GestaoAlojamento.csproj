@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FuncoesDLL\FuncoesDLL.csproj" />
     <ProjectReference Include="..\GestaoAlojamentoDLL\GestaoAlojamentoDLL.csproj" />
   </ItemGroup>
 

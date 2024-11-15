@@ -16,5 +16,25 @@ namespace GestaoAlojamento
         {
             InitializeComponent();
         }
+
+        private void buttonCriarAlojamento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEditarAlojamento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminarAlojamento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonListarAlojamento_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

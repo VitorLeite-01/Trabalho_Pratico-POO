@@ -57,6 +57,7 @@
             buttonEditarReserva.TabIndex = 2;
             buttonEditarReserva.Text = "Editar Reserva";
             buttonEditarReserva.UseVisualStyleBackColor = true;
+            buttonEditarReserva.Click += buttonEditarReserva_Click;
             // 
             // buttonEliminarReserva
             // 
@@ -67,6 +68,7 @@
             buttonEliminarReserva.TabIndex = 3;
             buttonEliminarReserva.Text = "Eliminar Reserva";
             buttonEliminarReserva.UseVisualStyleBackColor = true;
+            buttonEliminarReserva.Click += buttonEliminarReserva_Click;
             // 
             // buttonListarReserva
             // 
@@ -77,6 +79,7 @@
             buttonListarReserva.TabIndex = 4;
             buttonListarReserva.Text = "Listar Reserva";
             buttonListarReserva.UseVisualStyleBackColor = true;
+            buttonListarReserva.Click += buttonListarReserva_Click;
             // 
             // label1
             // 

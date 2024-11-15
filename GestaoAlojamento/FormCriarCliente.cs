@@ -1,4 +1,5 @@
 ﻿using GestaoAlojamentoDLL;
+using FuncoesDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,94 +17,61 @@ namespace GestaoAlojamento
     public partial class FormCriarCliente : Form
     {
         private FormPrincipal mainForm;
+        private ClienteService clienteService;
         public FormCriarCliente(FormPrincipal form1)
         {
             InitializeComponent();
             mainForm = form1;
+            clienteService = new ClienteService(); // Instancia o ClienteService
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            // Verifica se todos os campos estão preenchidos
-            if (string.IsNullOrWhiteSpace(textBoxNome.Text) ||
-                dateTimeNascimento.Value == DateTime.MinValue ||
-                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTelefone.Text))
-            {
-                MessageBox.Show("Por favor, preencha todos os campos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // Validação de idade mínima (18 anos)
-            DateTime dataNascimento = dateTimeNascimento.Value;
-            int idade = DateTime.Now.Year - dataNascimento.Year;
-            if (dataNascimento > DateTime.Now.AddYears(-idade)) idade--;
-
-            if (idade < 18)
-            {
-                MessageBox.Show("O cliente deve ter pelo menos 18 anos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // Verifica se o email é válido
-            if (!IsValidEmail(textBoxEmail.Text))
-            {
-                MessageBox.Show("O email inserido não é válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Cria o cliente se as validações forem atendidas
             var novoCliente = new Cliente
             {
-               // Id = Guid.NewGuid().ToString(), // Usa Guid para um ID único
                 Nome = textBoxNome.Text,
                 DataNascimento = dateTimeNascimento.Value,
                 Telefone = textBoxTelefone.Text,
                 Email = textBoxEmail.Text
             };
 
-            // Caminho do arquivo JSON
-            string caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "clientes.json");
-
-            // Lista para armazenar clientes
-            List<Cliente> listaClientes;
-
-            // Lê o arquivo JSON se existir
-            if (File.Exists(caminhoArquivo))
+            // Verifica se todos os campos obrigatórios estão preenchidos
+            if (!clienteService.CamposPreenchidos(novoCliente))
             {
-                // Carrega a lista de clientes existente
-                string jsonExistente = File.ReadAllText(caminhoArquivo);
-                listaClientes = JsonConvert.DeserializeObject<List<Cliente>>(jsonExistente) ?? new List<Cliente>();
+                MessageBox.Show("Por favor, preencha todos os campos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Valida se o cliente tem a idade mínima de 18 anos
+            if (!clienteService.IdadeMinima(novoCliente.DataNascimento))
+            {
+                MessageBox.Show("O cliente deve ter pelo menos 18 anos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Valida o formato do email
+            if (!clienteService.IsValidEmail(novoCliente.Email))
+            {
+                MessageBox.Show("O email inserido não é válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Guarda o cliente usando o ClienteService
+            if (clienteService.GuardarCliente(novoCliente))
+            {
+                MessageBox.Show($"Cliente registado com sucesso! ID do Cliente: {novoCliente.Id}", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpa os campos após salvar
+                textBoxNome.Clear();
+                textBoxEmail.Clear();
+                textBoxTelefone.Clear();
+                dateTimeNascimento.Value = DateTime.Now;
             }
             else
             {
-                listaClientes = new List<Cliente>();
+                MessageBox.Show("Erro ao guardar cliente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Adiciona o novo cliente à lista
-            listaClientes.Add(novoCliente);
-
-            // Converte a lista de clientes para JSON e salva no arquivo
-            string jsonAtualizado = JsonConvert.SerializeObject(listaClientes, Formatting.Indented);
-            File.WriteAllText(caminhoArquivo, jsonAtualizado);
-
-            MessageBox.Show($"Cliente registado com sucesso! ID do Cliente: {novoCliente.Id}", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            // Limpar os campos após guardar
-            textBoxNome.Clear();
-            textBoxEmail.Clear();
-            textBoxTelefone.Clear();
-            dateTimeNascimento.Value = DateTime.Now;
-
         }
-
-        // Método para validar o formato do email
-        private bool IsValidEmail(string email)
-        {
-            // Padrão básico de regex para validar email
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            return Regex.IsMatch(email, pattern);
-        }
-    
-
         private void FormCriarCliente_Load(object sender, EventArgs e)
         {
 

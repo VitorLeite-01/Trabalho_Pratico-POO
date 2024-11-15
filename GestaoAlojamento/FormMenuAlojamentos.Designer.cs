@@ -56,6 +56,7 @@
             buttonCriarAlojamento.TabIndex = 1;
             buttonCriarAlojamento.Text = "Criar Alojamento";
             buttonCriarAlojamento.UseVisualStyleBackColor = true;
+            buttonCriarAlojamento.Click += buttonCriarAlojamento_Click;
             // 
             // buttonEditarAlojamento
             // 
@@ -66,6 +67,7 @@
             buttonEditarAlojamento.TabIndex = 2;
             buttonEditarAlojamento.Text = "Editar Alojamento";
             buttonEditarAlojamento.UseVisualStyleBackColor = true;
+            buttonEditarAlojamento.Click += buttonEditarAlojamento_Click;
             // 
             // buttonEliminarAlojamento
             // 
@@ -76,6 +78,7 @@
             buttonEliminarAlojamento.TabIndex = 3;
             buttonEliminarAlojamento.Text = "Eliminar Alojamento";
             buttonEliminarAlojamento.UseVisualStyleBackColor = true;
+            buttonEliminarAlojamento.Click += buttonEliminarAlojamento_Click;
             // 
             // buttonListarAlojamento
             // 
@@ -86,6 +89,7 @@
             buttonListarAlojamento.TabIndex = 4;
             buttonListarAlojamento.Text = "Listar Alojamento";
             buttonListarAlojamento.UseVisualStyleBackColor = true;
+            buttonListarAlojamento.Click += buttonListarAlojamento_Click;
             // 
             // panel1
             // 
