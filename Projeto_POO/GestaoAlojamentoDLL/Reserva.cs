@@ -19,7 +19,7 @@ namespace GestaoAlojamentoDLL
         {
             get
             {
-                return $"Reserva #{Id} - Cliente: {Cliente.Nome} - Quarto: {Alojamento.NumeroAlojamento} - Check-in: {DataCheckIn:dd/MM/yyyy} - Check-out: {DataCheckOut:dd/MM/yyyy}";
+                return $"Reserva #{Id} | Cliente: {Cliente.Nome} | Quarto: {Alojamento.NumeroAlojamento} | Check-in: {DataCheckIn:dd/MM/yyyy} | Check-out: {DataCheckOut:dd/MM/yyyy}";
             }
         }
         #endregion

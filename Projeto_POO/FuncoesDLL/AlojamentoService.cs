@@ -152,7 +152,7 @@ namespace FuncoesDLL
         public List<string> CarregarListaFormatada()
         {
             var alojamentos = CarregarAlojamentos();
-            return alojamentos.Select(a => $"{a.Id} - {a.NumeroAlojamento}").ToList();
+            return alojamentos.Select(a => $"{a.Id} | {a.NumeroAlojamento}").ToList();
         }
         /// <summary>
         /// 
