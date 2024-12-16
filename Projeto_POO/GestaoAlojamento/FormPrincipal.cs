@@ -36,7 +36,8 @@ namespace GestaoAlojamento
         /// <returns></returns>
         public List<Cliente> CarregarClientes()
         {
-            string caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "clientes.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+            string caminhoArquivo = Path.Combine(pastaDados, "clientes.json");
 
             if (File.Exists(caminhoArquivo))
             {
@@ -51,7 +52,8 @@ namespace GestaoAlojamento
         /// <returns></returns>
         public List<Alojamento> CarregarAlojamentos()
         {
-            string caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "alojamentos.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+            string caminhoArquivo = Path.Combine(pastaDados, "alojamentos.json");
 
             if (File.Exists(caminhoArquivo))
             {
@@ -66,7 +68,8 @@ namespace GestaoAlojamento
         /// <returns></returns>
         public List<Reserva> CarregarReservas()
         {
-            string caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "reservas.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+            string caminhoArquivo = Path.Combine(pastaDados, "reservas.json");
 
             if (File.Exists(caminhoArquivo))
             {

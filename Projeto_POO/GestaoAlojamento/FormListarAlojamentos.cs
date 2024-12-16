@@ -43,11 +43,6 @@ namespace GestaoAlojamento
             });
             dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Estado",
-                HeaderText = "Estado"
-            });
-            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
-            {
                 DataPropertyName = "Id",
                 HeaderText = "Id"
             });

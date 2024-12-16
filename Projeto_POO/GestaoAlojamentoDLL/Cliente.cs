@@ -14,13 +14,20 @@ namespace GestaoAlojamentoDLL
             public DateTime DataNascimento { get; set; }
             public string Telefone { get; set; }
             public string Email { get; set; }
-            #endregion
+        public string InfoCompleta
+        {
+            get
+            {
+                return $"{Id} | {Nome}";
+            }
+        }
+        #endregion
 
-            #region Constructors
-            /// <summary>
-            /// 
-            /// </summary>
-            public Cliente() { }
+        #region Constructors
+        /// <summary>
+        /// 
+        /// </summary>
+        public Cliente() { }
 
         /// <summary>
         /// 

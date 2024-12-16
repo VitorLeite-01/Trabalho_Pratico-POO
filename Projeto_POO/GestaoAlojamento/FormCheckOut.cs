@@ -59,7 +59,6 @@ namespace GestaoAlojamento
                 if (!reservasAtivas.Any())
                 {
                     MessageBox.Show("Nenhuma reserva ativa encontrada.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                     return;
                 }
 

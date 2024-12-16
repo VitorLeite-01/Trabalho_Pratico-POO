@@ -12,14 +12,22 @@ namespace FuncoesDLL
     {
         #region Properties
         public readonly string caminhoArquivo;
+        public readonly string caminhoLog;
         #endregion
         #region Constructors
         /// <summary>
         /// 
         /// </summary>
-        public AlojamentoService() 
+        public AlojamentoService()
         {
-            caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "alojamentos.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+
+            if (!Directory.Exists(pastaDados))
+            {
+                Directory.CreateDirectory(pastaDados);
+            }
+            caminhoArquivo = Path.Combine(pastaDados, "alojamentos.json");
+            caminhoLog = Path.Combine(pastaDados, "logAlojamento.txt");
         }
         #endregion
         // Validações
@@ -152,7 +160,6 @@ namespace FuncoesDLL
         /// <param name="mensagem"></param>
         private void RegistarErro(string mensagem)
         {
-            string caminhoLog = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "logAlojamento.txt");
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
             File.AppendAllText(caminhoLog, conteudo);
         }

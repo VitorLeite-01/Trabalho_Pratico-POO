@@ -12,11 +12,22 @@ namespace FuncoesDLL
     {
         #region Properties
         public readonly string caminhoArquivo;
+        public readonly string caminhoLog;
         #endregion
         #region Constructors
-        public ClienteService() 
+        /// <summary>
+        /// 
+        /// </summary>
+        public ClienteService()
         {
-            caminhoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "clientes.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+
+            if (!Directory.Exists(pastaDados))
+            {
+                Directory.CreateDirectory(pastaDados);
+            }
+            caminhoArquivo = Path.Combine(pastaDados, "clientes.json");
+            caminhoLog = Path.Combine(pastaDados, "log.txt");
         }
         #endregion
         // Validações
@@ -70,7 +81,7 @@ namespace FuncoesDLL
                 if (File.Exists(caminhoArquivo))
                 {
                     string json = File.ReadAllText(caminhoArquivo);
-
+                    
                     var clientes = JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
 
                     if (clientes.Any())
@@ -164,7 +175,6 @@ namespace FuncoesDLL
         /// <param name="mensagem"></param>
         private void RegistarErro(string mensagem)
         {
-            string caminhoLog = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "log.txt");
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
             File.AppendAllText(caminhoLog, conteudo);
         }

@@ -42,7 +42,7 @@ namespace GestaoAlojamento
         {
             var clientes = clienteService.CarregarClientes();
             comboBoxCliente.DataSource = clientes;
-            comboBoxCliente.DisplayMember = "Nome"; 
+            comboBoxCliente.DisplayMember = "InfoCompleta"; 
             comboBoxCliente.ValueMember = "Id";   
         }
         /// <summary>

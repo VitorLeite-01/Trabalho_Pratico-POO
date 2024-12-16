@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoAlojamento", "GestaoA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoAlojamentoDLL", "GestaoAlojamentoDLL\GestaoAlojamentoDLL.csproj", "{2529084B-8F15-4DFD-8B40-2131D0B52E41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncoesDLL", "FuncoesDLL\FuncoesDLL.csproj", "{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncoesDLL", "FuncoesDLL\FuncoesDLL.csproj", "{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

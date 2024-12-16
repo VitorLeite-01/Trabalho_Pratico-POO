@@ -12,13 +12,21 @@ namespace FuncoesDLL
     {
         public readonly string caminhoArquivoReservas;
         public readonly string caminhoArquivoAlojamentos;
+        public readonly string caminhoLog;
         private readonly AlojamentoService alojamentoService;
        /// <summary>
        /// 
        /// </summary>
         public ReservaService()
         {
-            caminhoArquivoReservas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "reservas.json");
+            string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
+           
+            if (!Directory.Exists(pastaDados))
+            {
+                Directory.CreateDirectory(pastaDados);
+            }
+            caminhoArquivoReservas = Path.Combine(pastaDados, "reservas.json");
+            caminhoLog = Path.Combine(pastaDados, "logReservas.txt");
             alojamentoService = new AlojamentoService(); 
         }
         #region Métodos para Gerir Reservas
@@ -212,7 +220,6 @@ namespace FuncoesDLL
         /// <param name="mensagem"></param>
         private void RegistarErro(string mensagem)
         {
-            string caminhoLog = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "logReservas.txt");
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
             File.AppendAllText(caminhoLog, conteudo);
         }

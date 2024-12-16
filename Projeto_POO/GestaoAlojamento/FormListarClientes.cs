@@ -27,7 +27,7 @@ namespace GestaoAlojamento
         /// </summary>
         /// <param name="clientes"></param>
         private void CarregarDados(List<Cliente> clientes)
-        { 
+        {
             dataGridViewClientes.AutoGenerateColumns = false;
             dataGridViewClientes.Columns.Clear();
             dataGridViewClientes.Columns.Add(new DataGridViewTextBoxColumn
