@@ -15,17 +15,21 @@ namespace GestaoAlojamento
 {
     public partial class FormEditarClienteDetalhes : Form
     {
+        #region Properties
         private Cliente cliente;
         private ClienteService clienteService;
         private FormEditarCliente formEditarCliente; 
         private FormPrincipal mainForm;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de edição de detalhes.
         /// </summary>
-        /// <param name="cliente"></param>
-        /// <param name="clienteService"></param>
-        /// <param name="formEditarCliente"></param>
-        /// <param name="mainForm"></param>
+        /// <param name="cliente">Dados do cliente selecionado.</param>
+        /// <param name="clienteService">Serviço do cliente.</param>
+        /// <param name="formEditarCliente">Formulario pai.</param>
+        /// <param name="mainForm">Referência ao formulário principal.</param>
         public FormEditarClienteDetalhes(Cliente cliente, ClienteService clienteService, FormEditarCliente formEditarCliente, FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -35,8 +39,11 @@ namespace GestaoAlojamento
             this.mainForm = mainForm;
             PreencherDados();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Preenche os campos com os dados atuais do cliente.
         /// </summary>
         private void PreencherDados()
         {
@@ -45,16 +52,19 @@ namespace GestaoAlojamento
             textBoxTelefone.Text = cliente.Telefone;
             dateTimeNascimento.Value = cliente.DataNascimento;
         }
+        #endregion
 
+        #region Eventos
         private void FormEditarClienteDetalhes_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Guardar.
+        /// Valida e guarda os dados editados do cliente.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             cliente.Nome = textBoxNome.Text.Trim();
@@ -107,14 +117,16 @@ namespace GestaoAlojamento
             }
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Cancelar.
+        /// Retorna ao formulário pai de edição de cliente.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             mainForm.AbrirFormNoPanel(formEditarCliente);
         }
     }
+    #endregion
 }
 

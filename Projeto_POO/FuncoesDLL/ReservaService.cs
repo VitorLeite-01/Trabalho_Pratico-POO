@@ -14,9 +14,9 @@ namespace FuncoesDLL
         public readonly string caminhoArquivoAlojamentos;
         public readonly string caminhoLog;
         private readonly AlojamentoService alojamentoService;
-       /// <summary>
-       /// 
-       /// </summary>
+        /// <summary>
+        /// Construtor que inicializa caminhos para arquivos de reservas e logs, e garante a existência da pasta de dados.
+        /// </summary>
         public ReservaService()
         {
             string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
@@ -31,9 +31,10 @@ namespace FuncoesDLL
         }
         #region Métodos para Gerir Reservas
         /// <summary>
-        /// 
+        /// Carrega a lista de reservas a partir de um arquivo JSON.
+        /// Retorna uma lista vazia se o arquivo não existir ou em caso de erro.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de reservas carregada do arquivo</returns>
         public List<Reserva> CarregarReservas()
         {
             try
@@ -66,18 +67,18 @@ namespace FuncoesDLL
             return new List<Reserva>();
         }
         /// <summary>
-        /// 
+        /// Guarda a lista completa de reservas no ficheiro JSON correspondente.
         /// </summary>
-        /// <param name="reservas"></param>
+        /// <param name="reservas">Lista de reservas a ser guardada</param>
         private void GuardarListaReservas(List<Reserva> reservas)
         {
             string json = JsonConvert.SerializeObject(reservas, Formatting.Indented);
             File.WriteAllText(caminhoArquivoReservas, json);
         }
         /// <summary>
-        /// 
+        /// Adiciona uma nova reserva à lista e atualiza o ficheiro de reservas.
         /// </summary>
-        /// <param name="reserva"></param>
+        /// <param name="reserva">Objeto da nova reserva a ser adicionada</param>
         public void GuardarReserva(Reserva reserva)
         {
             var reservas = CarregarReservas();
@@ -88,13 +89,13 @@ namespace FuncoesDLL
             File.WriteAllText(caminhoArquivoReservas, json);
         }
         /// <summary>
-        /// 
+        /// Verifica se um alojamento está disponível para reserva num intervalo de datas.
         /// </summary>
-        /// <param name="alojamentoId"></param>
-        /// <param name="dataCheckIn"></param>
-        /// <param name="dataCheckOut"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <param name="alojamentoId">ID do alojamento</param>
+        /// <param name="dataCheckIn">Data de início</param>
+        /// <param name="dataCheckOut">Data de fim</param>
+        /// <returns>True se disponível; False se ocupado</returns>
+        /// <exception cref="ArgumentException">Lança uma exceção se a dataCheckOut não for maior que dataCheckIn</exception>
         public bool AlojamentoDisponivel(int alojamentoId, DateTime dataCheckIn, DateTime dataCheckOut)
         {
             if (dataCheckIn >= dataCheckOut)
@@ -109,10 +110,11 @@ namespace FuncoesDLL
             );
         }
         /// <summary>
-        /// 
+        /// Remove uma reserva da lista e atualiza o ficheiro JSON de reservas.
+        /// Atualiza o estado do alojamento associado à reserva para "Disponível".
         /// </summary>
-        /// <param name="reservaId"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="reservaId">ID da reserva a ser removida</param>
+        /// <exception cref="Exception">Lança uma exceção se a reserva não for encontrada</exception>
         public void EliminarReserva(int reservaId)
         {
             var reservas = CarregarReservas();
@@ -136,10 +138,11 @@ namespace FuncoesDLL
             File.WriteAllText(caminhoArquivoReservas, JsonConvert.SerializeObject(reservas, Formatting.Indented));
         }
         /// <summary>
-        /// 
+        /// Atualiza o estado de uma reserva para "Ativa" no momento do check-in
+        /// Marca o estado do alojamento correspondente como "Ocupado".
         /// </summary>
-        /// <param name="reservaId"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="reservaId">ID da reserva</param>
+        /// <exception cref="Exception">Lança uma exceção se a reserva não for encontrada ou não estiver pendente</exception>
         public void EfetuarCheckIn(int reservaId)
         {
             var reservas = CarregarReservas();
@@ -158,12 +161,13 @@ namespace FuncoesDLL
         }
 
         /// <summary>
-        /// 
+        /// Efetua o check-out de uma reserva, atualiza o estado para "Concluída",
+        /// calcula o valor final e define o alojamento como "Disponível".
         /// </summary>
-        /// <param name="reservaId"></param>
-        /// <param name="dataRealCheckOut"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <param name="reservaId">ID da reserva</param>
+        /// <param name="dataRealCheckOut">Data real do fim da hospedagem</param>
+        /// <returns>Valor total da estadia</returns>
+        /// <exception cref="Exception">Lança uma exceção se a reserva não for encontrada ou se ocorrer uma incoerência de datas</exception>
         public decimal EfetuarCheckOut(int reservaId, DateTime dataRealCheckOut)
         {
             var reservas = CarregarReservas();
@@ -190,10 +194,10 @@ namespace FuncoesDLL
             return reserva.ValorFinal;
         }
         /// <summary>
-        /// 
+        /// Atualiza os dados de uma reserva existente com base numa reserva fornecida.
         /// </summary>
-        /// <param name="reservaAtualizada"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="reservaAtualizada">Objeto da reserva com os dados atualizados</param>
+        /// <exception cref="Exception">Lança uma exceção se a reserva não for encontrada</exception>
         public void AtualizarReserva(Reserva reservaAtualizada)
         {
             var reservas = CarregarReservas();
@@ -215,9 +219,9 @@ namespace FuncoesDLL
             File.WriteAllText(caminhoArquivoReservas, json);
         }
         /// <summary>
-        /// 
+        /// Regista uma mensagem de erro no ficheiro de logs.
         /// </summary>
-        /// <param name="mensagem"></param>
+        /// <param name="mensagem">Mensagem do erro a ser registada</param>
         private void RegistarErro(string mensagem)
         {
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
@@ -227,9 +231,10 @@ namespace FuncoesDLL
 
         #region Métodos para Gerir Alojamentos
         /// <summary>
-        /// 
+        /// Carrega a lista de alojamentos a partir de um ficheiro JSON.
+        /// Retorna uma lista vazia se o ficheiro não existir.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de alojamentos</returns>
         public List<Alojamento> CarregarAlojamentos()
         {
             if (File.Exists(caminhoArquivoAlojamentos))
@@ -241,11 +246,11 @@ namespace FuncoesDLL
         }
 
         /// <summary>
-        /// 
+        /// Atualiza o estado de um alojamento com base no ID fornecido.
         /// </summary>
-        /// <param name="alojamentoId"></param>
-        /// <param name="novoEstado"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="alojamentoId">ID do alojamento</param>
+        /// <param name="novoEstado">Novo estado a ser definido</param>
+        /// <exception cref="Exception">Lança uma exceção se o alojamento não for encontrado</exception>
         public void AtualizarEstadoAlojamento(int alojamentoId, EstadoAlojamento novoEstado)
         {
             var alojamentos = CarregarAlojamentos();

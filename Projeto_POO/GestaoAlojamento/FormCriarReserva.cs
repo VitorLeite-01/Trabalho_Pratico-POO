@@ -14,14 +14,18 @@ namespace GestaoAlojamento
 {
     public partial class FormCriarReserva : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private AlojamentoService alojamentoService;
         private ClienteService clienteService;
         private ReservaService reservaService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário para criar reservas.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
         public FormCriarReserva(FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -35,8 +39,11 @@ namespace GestaoAlojamento
             
             PreencherClientes();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Preenche o combobox com a lista de clientes registados.
         /// </summary>
         private void PreencherClientes()
         {
@@ -45,20 +52,16 @@ namespace GestaoAlojamento
             comboBoxCliente.DisplayMember = "InfoCompleta"; 
             comboBoxCliente.ValueMember = "Id";   
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void FormCriarReserva_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Valida os dados inseridos e avança para o formulário de seleção de alojamento.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonAvancar_Click(object sender, EventArgs e)
         {
             if (!DateTime.TryParse(dateCheckin.Text, out DateTime dataCheckIn) ||
@@ -86,14 +89,15 @@ namespace GestaoAlojamento
             mainForm.AbrirFormNoPanel(formSelecionarAlojamento);
         }
         /// <summary>
-        /// 
+        /// Retorna ao menu principal das reservas.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuReserva formMenuReservas = new FormMenuReserva(mainForm);
             mainForm.AbrirFormNoPanel(formMenuReservas);
         }
+        #endregion
     }
 }

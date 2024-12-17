@@ -15,19 +15,23 @@ namespace GestaoAlojamento
 {
     public partial class FormEditarReservaAlojamento : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private Reserva reserva;
         private AlojamentoService alojamentoService;
         private List<Alojamento> alojamentosDisponiveis;
         private DateTime dataCheckIn;
         private DateTime dataCheckOut;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de edição da reserva de alojamento.
         /// </summary>
-        /// <param name="mainForm"></param>
-        /// <param name="reservaSelecionada"></param>
-        /// <param name="dataCheckIn"></param>
-        /// <param name="dataCheckOut"></param>
+        /// <param name="mainForm">Referência ao formulário principal.</param>
+        /// <param name="reservaSelecionada">Reserva selecionada para edição.</param>
+        /// <param name="dataCheckIn">Data de check-in.</param>
+        /// <param name="dataCheckOut">Data de check-out.</param>
         public FormEditarReservaAlojamento(FormPrincipal mainForm, Reserva reservaSelecionada, DateTime dataCheckIn, DateTime dataCheckOut)
         {
             InitializeComponent();
@@ -39,15 +43,47 @@ namespace GestaoAlojamento
 
             comboBoxCategorias.DataSource = Enum.GetValues(typeof(CategoriaAlojamento));
         }
+        #endregion
+
+        #region Métodos
+        /// <summary>
+        /// Configura o DataGridView com a lista de alojamentos disponíveis.
+        /// </summary>
+        /// <param name="alojamentos">Lista de alojamentos disponíveis.</param>
+        private void ConfigurarDataGridView(List<Alojamento> alojamentos)
+        {
+            dataGridViewAlojamentos.AutoGenerateColumns = false;
+            dataGridViewAlojamentos.Columns.Clear();
+            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NumeroAlojamento",
+                DataPropertyName = "NumeroAlojamento",
+                HeaderText = "Número do Alojamento"
+            });
+            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Categoria",
+                HeaderText = "Categoria"
+            });
+            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "PrecoPorNoite",
+                HeaderText = "Preço por noite"
+            });
+            dataGridViewAlojamentos.DataSource = alojamentos;
+        }
+        #endregion
+
+        #region Eventos
         private void FormEditarReservaAlojamentocs_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Pesquisar.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonPesquisar_Click(object sender, EventArgs e)
         {
             if (comboBoxCategorias.SelectedItem == null)
@@ -71,37 +107,13 @@ namespace GestaoAlojamento
 
             ConfigurarDataGridView(alojamentosDisponiveis);
         }
+
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Confirmar.
+        /// Atualiza os dados da reserva.
         /// </summary>
-        /// <param name="alojamentos"></param>
-        private void ConfigurarDataGridView(List<Alojamento> alojamentos)
-        {
-            dataGridViewAlojamentos.AutoGenerateColumns = false;
-            dataGridViewAlojamentos.Columns.Clear();
-            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "NumeroAlojamento",
-                DataPropertyName = "NumeroAlojamento",
-                HeaderText = "Número do Alojamento"
-            });
-            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Categoria",
-                HeaderText = "Categoria"
-            });
-            dataGridViewAlojamentos.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "PrecoPorNoite",
-                HeaderText = "Preço por noite"
-            });
-            dataGridViewAlojamentos.DataSource = alojamentos;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
             try
@@ -161,14 +173,16 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Cancelar.
+        /// Retorna para o formulário anterior.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             FormEditarReservaData formEditarReservaData = new FormEditarReservaData(mainForm, reserva);
             mainForm.AbrirFormNoPanel(formEditarReservaData);
         }
     }
+    #endregion
 }

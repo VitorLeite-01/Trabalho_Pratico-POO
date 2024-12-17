@@ -16,7 +16,8 @@ namespace FuncoesDLL
         #endregion
         #region Constructors
         /// <summary>
-        /// 
+        /// Construtor da classe que inicializa os caminhos para os arquivos de dados e logs.
+        /// Cria a pasta de dados caso ela não exista.
         /// </summary>
         public ClienteService()
         {
@@ -30,13 +31,15 @@ namespace FuncoesDLL
             caminhoLog = Path.Combine(pastaDados, "log.txt");
         }
         #endregion
-        // Validações
+
+        # region Validações
+
 
         /// <summary>
-        /// 
+        /// Verifica se todos os campos obrigatórios do cliente estão preenchidos.
         /// </summary>
-        /// <param name="cliente"></param>
-        /// <returns></returns>
+        /// <param name="cliente">Objeto do tipo Cliente.</param>
+        /// <returns>Verdadeiro se todos os campos necessários forem preenchidos, caso contrário, falso.</returns>
         public bool CamposPreenchidos(Cliente cliente)
         {
             return !string.IsNullOrWhiteSpace(cliente.Nome) &&
@@ -47,10 +50,10 @@ namespace FuncoesDLL
         }
 
         /// <summary>
-        /// 
+        /// Verifica se um endereço de email tem um formato válido.
         /// </summary>
-        /// <param name="email"></param>
-        /// <returns></returns>
+        /// <param name="email">Email do cliente.</param>
+        /// <returns>Verdadeiro se o email for válido, caso contrário, falso.</returns>
         public bool IsValidEmail(string email)
         {
             
@@ -59,21 +62,24 @@ namespace FuncoesDLL
         }
 
         /// <summary>
-        /// 
+        /// Verifica se o cliente tem idade mínima definida para ser registado.
         /// </summary>
-        /// <param name="dataNascimento"></param>
-        /// <param name="idadeMinima"></param>
-        /// <returns></returns>
+        /// <param name="dataNascimento">Data de nascimento do cliente.</param>
+        /// <param name="idadeMinima">Idade mínima necessária (padrão: 18 anos).</param>
+        /// <returns>Verdadeiro se a idade do cliente for igual ou superior à idade mínima, caso contrário, falso.</returns>
         public bool IdadeMinima(DateTime dataNascimento, int idadeMinima = 18)
         {
             int idade = DateTime.Now.Year - dataNascimento.Year;
             if (dataNascimento > DateTime.Now.AddYears(-idade)) idade--;
             return idade >= idadeMinima;
         }
+        #endregion
+
+        #region Métodos de Gestão de Clientes
         /// <summary>
-        /// 
+        ///  Carrega a lista de clientes a partir do arquivo JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de objetos do tipo Cliente.</returns>
         public List<Cliente> CarregarClientes()
         {
             try
@@ -106,10 +112,10 @@ namespace FuncoesDLL
         }
 
         /// <summary>
-        /// 
+        /// Guarda um novo cliente no arquivo JSON.
         /// </summary>
-        /// <param name="cliente"></param>
-        /// <returns></returns>
+        /// <param name="cliente">Objeto do tipo Cliente a ser guardado.</param>
+        /// <returns>Verdadeiro se o cliente for guardado com sucesso, caso contrário, falso.</returns>
         public bool GuardarCliente(Cliente cliente)
         {
             var clientes = CarregarClientes(); 
@@ -131,12 +137,12 @@ namespace FuncoesDLL
                 return false;
             }
         }
-       
+
         /// <summary>
-        /// 
+        /// Elimina um cliente do arquivo JSON com base no ID.
         /// </summary>
-        /// <param name="clienteId"></param>
-        /// <returns></returns>
+        /// <param name="clienteId">ID do cliente a ser removido.</param>
+        /// <returns>Verdadeiro se o cliente for removido com sucesso, caso contrário, falso.</returns>
         public bool EliminarCliente(int clienteId)
          {
              var clientes = CarregarClientes();
@@ -160,24 +166,26 @@ namespace FuncoesDLL
          }
 
         /// <summary>
-        /// 
+        /// Gera uma lista formatada com os IDs e os nomes dos clientes.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de strings no formato "ID | Nome".</returns>
         public List<string> CarregarListaFormatada()
         {
             var clientes = CarregarClientes();
             return clientes.Select(c => $"{c.Id} | {c.Nome}").ToList();
         }
+        #endregion
 
+        #region Gestão de Erros
         /// <summary>
-        /// 
+        /// Regista uma mensagem de erro no arquivo de log.
         /// </summary>
-        /// <param name="mensagem"></param>
+        /// <param name="mensagem">Mensagem de erro a ser registada.</param>
         private void RegistarErro(string mensagem)
         {
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
             File.AppendAllText(caminhoLog, conteudo);
         }
-
+        #endregion
     }
 }

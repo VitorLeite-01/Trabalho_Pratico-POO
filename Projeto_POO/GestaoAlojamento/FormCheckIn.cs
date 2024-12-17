@@ -14,11 +14,14 @@ namespace GestaoAlojamento
 {
     public partial class FormCheckIn : Form
     {
+        #region Properties
         private ReservaService reservaService;
         private AlojamentoService alojamentoService;
         private Reserva reservaSelecionada;
+        #endregion
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa o formulário de check-in e carrega as reservas pendentes.
         /// </summary>
         public FormCheckIn()
         {
@@ -27,8 +30,12 @@ namespace GestaoAlojamento
             alojamentoService = new AlojamentoService();
             CarregarReservasPendentes(); 
         }
+        #endregion
+
+        #region Métodos 
         /// <summary>
-        /// 
+        /// Carrega todas as reservas com estado "Pendente" e preenche o ComboBox para seleção.
+        /// Caso não existam reservas pendentes, o formulário é fechado.
         /// </summary>
         private void CarregarReservasPendentes()
         {
@@ -48,17 +55,18 @@ namespace GestaoAlojamento
                 this.Close();
             }
         }
-
-
+        #endregion
+        #region Eventos
         private void FormCheckIn_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento disparado quando o botão "Efetuar Check-In" é clicado.
+        /// Atualiza o estado do alojamento e reserva selecionada para indicar o check-in.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonEfetuarCheckIn_Click(object sender, EventArgs e)
         {
             if (comboBoxReservas.SelectedItem == null)
@@ -91,6 +99,8 @@ namespace GestaoAlojamento
             MessageBox.Show("Check-In efetuado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             comboBoxReservas.SelectedIndex = -1;
         }
+        #endregion
+
     }
 }
 

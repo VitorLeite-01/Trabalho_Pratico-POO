@@ -16,23 +16,30 @@ namespace GestaoAlojamento
 {
     public partial class FormCriarCliente : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private ClienteService clienteService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário para criar clientes.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
         public FormCriarCliente(FormPrincipal mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            clienteService = new ClienteService(); // Instancia o ClienteService
+            clienteService = new ClienteService(); 
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Valida e guarda os dados do novo cliente inserido.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             var novoCliente = new Cliente
@@ -78,14 +85,15 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Retorna ao menu principal dos clientes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuClientes formMenuClientes = new FormMenuClientes(mainForm);
             mainForm.AbrirFormNoPanel(formMenuClientes);
         }
+        #endregion
     }
 }

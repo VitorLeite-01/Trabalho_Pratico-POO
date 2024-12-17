@@ -17,17 +17,17 @@ namespace GestaoAlojamentoDLL
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Construtor padrão para inicializar um alojamento sem definir propriedades específicas.
         /// </summary>
         public Alojamento() { }
 
         /// <summary>
-        /// 
+        /// Construtor para inicializar um alojamento com propriedades especificadas.
         /// </summary>
-        /// <param name="numeroAlojamento"></param>
-        /// <param name="categoria"></param>
-        /// <param name="precoPorNoite"></param>
-        /// <param name="estado"></param>
+        /// <param name="numeroAlojamento">Número do Alojamento</param>
+        /// <param name="categoria">Categoria do Alojamento</param>
+        /// <param name="precoPorNoite">Preço a ser cobrado por noite</param>
+        /// <param name="estado">Estado em que se encontra o alojamento</param>
         public Alojamento(int numeroAlojamento, CategoriaAlojamento categoria, decimal precoPorNoite, EstadoAlojamento estado)
             : base()
         {

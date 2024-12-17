@@ -14,13 +14,17 @@ namespace GestaoAlojamento
 {
     public partial class FormEditarAlojamento : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private AlojamentoService alojamentoService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de edição de alojamentos.
         /// </summary>
-        /// <param name="mainForm"></param>
-        /// <param name="AlojamentoId"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
+        /// <param name="AlojamentoId">Identificador do alojamento.</param>
         public FormEditarAlojamento(FormPrincipal mainForm, int AlojamentoId)
         {
             InitializeComponent();
@@ -28,8 +32,11 @@ namespace GestaoAlojamento
             alojamentoService = new AlojamentoService();
             CarregarListaAlojamentos();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Carrega a lista de alojamentos no comboBox.
         /// </summary>
         private void CarregarListaAlojamentos()
         {
@@ -43,26 +50,28 @@ namespace GestaoAlojamento
                 this.Close();
             }
         }
+        #endregion
 
+        #region Eventos
         private void FormEditarAlojamento_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Fecha o formulário atual e volta ao menu principal de alojamentos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuAlojamentos formMenuAlojamentos = new FormMenuAlojamentos(mainForm);
             mainForm.AbrirFormNoPanel(formMenuAlojamentos);
         }
         /// <summary>
-        /// 
+        /// Permite a edição de detalhes do alojamento selecionado.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             if (comboBoxAlojamentos.SelectedItem == null)
@@ -72,7 +81,7 @@ namespace GestaoAlojamento
             }
 
             var selecionado = comboBoxAlojamentos.SelectedItem.ToString();
-            int alojamentoId = int.Parse(selecionado.Split('-')[0].Trim());
+            int alojamentoId = int.Parse(selecionado.Split('|')[0].Trim());
 
             var alojamento = alojamentoService.CarregarAlojamentos().FirstOrDefault(a => a.Id == alojamentoId);
             if (alojamento == null)
@@ -89,5 +98,6 @@ namespace GestaoAlojamento
         {
 
         }
+        #endregion
     }
 }

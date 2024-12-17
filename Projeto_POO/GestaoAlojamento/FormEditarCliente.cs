@@ -13,13 +13,17 @@ namespace GestaoAlojamento
 {
     public partial class FormEditarCliente : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private ClienteService clienteService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de edição de clientes.
         /// </summary>
-        /// <param name="mainForm"></param>
-        /// <param name="ClienteId"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
+        /// <param name="ClienteId">Identificador do cliente.</param>
         public FormEditarCliente(FormPrincipal mainForm, int ClienteId)
         {
             InitializeComponent();
@@ -27,8 +31,11 @@ namespace GestaoAlojamento
             clienteService = new ClienteService();
             CarregarListaClientes();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Carrega a lista de clienstes no comboBox.
         /// </summary>
         private void CarregarListaClientes()
         {
@@ -42,8 +49,9 @@ namespace GestaoAlojamento
                 this.Close();
             }
         }
+        #endregion
 
-
+        #region Eventos
         private void FormEditarCliente_Load(object sender, EventArgs e)
         {
 
@@ -54,20 +62,20 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Fecha o formulário atual e volta ao menu principal de clientes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuClientes formMenuClientes = new FormMenuClientes(mainForm);
             mainForm.AbrirFormNoPanel(formMenuClientes);
         }
         /// <summary>
-        /// 
+        /// Permite a edição de detalhes do cliente selecionado.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             if (comboBoxClientes.SelectedItem == null)
@@ -77,7 +85,7 @@ namespace GestaoAlojamento
             }
 
             var selecionado = comboBoxClientes.SelectedItem.ToString();
-            int clienteId = int.Parse(selecionado.Split('-')[0].Trim());
+            int clienteId = int.Parse(selecionado.Split('|')[0].Trim());
 
             
             var cliente = clienteService.CarregarClientes().FirstOrDefault(c => c.Id == clienteId);
@@ -90,5 +98,6 @@ namespace GestaoAlojamento
             FormEditarClienteDetalhes formEditarClienteDetalhes = new FormEditarClienteDetalhes(cliente, clienteService, this, mainForm);
             mainForm.AbrirFormNoPanel(formEditarClienteDetalhes);
         }
+        #endregion
     }
 }

@@ -15,13 +15,17 @@ namespace GestaoAlojamento
 {
     public partial class FormEliminarReserva : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private ReservaService reservaService;
         private List<Reserva> reservas;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de eliminação de reserva.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Referência ao formulário principal.</param>
         public FormEliminarReserva(FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -30,8 +34,11 @@ namespace GestaoAlojamento
 
             CarregarReservas();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Carrega a lista de reservas disponíveis na ComboBox.
         /// </summary>
         private void CarregarReservas()
         {
@@ -57,15 +64,19 @@ namespace GestaoAlojamento
                 MessageBox.Show($"Erro ao carregar reservas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region Eventos
         private void FormEliminarReserva_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão Eliminar.
+        /// Elimina a reserva selecionada.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -98,14 +109,16 @@ namespace GestaoAlojamento
             }
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão Voltar.
+        /// Retorna ao menu de reservas.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuReserva formMenuReserva = new FormMenuReserva(mainForm);
             mainForm.AbrirFormNoPanel(formMenuReserva);
         }
+        #endregion
     }
 }

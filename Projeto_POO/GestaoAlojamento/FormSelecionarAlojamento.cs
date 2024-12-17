@@ -14,18 +14,22 @@ namespace GestaoAlojamento
 {
     public partial class FormSelecionarAlojamento : Form
     {
+        #region Porperties
         private FormPrincipal mainForm;
         private Cliente cliente;
         private DateTime dataCheckIn;
         private DateTime dataCheckOut;
         private AlojamentoService alojamentoService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de seleção de alojamento.
         /// </summary>
-        /// <param name="mainForm"></param>
-        /// <param name="cliente"></param>
-        /// <param name="dataCheckIn"></param>
-        /// <param name="dataCheckOut"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
+        /// <param name="cliente">Cliente que realizará a reserva.</param>
+        /// <param name="dataCheckIn">Data de check-in.</param>
+        /// <param name="dataCheckOut">Data de check-out.</param>
         public FormSelecionarAlojamento(FormPrincipal mainForm, Cliente cliente, DateTime dataCheckIn, DateTime dataCheckOut)
         {
             InitializeComponent();
@@ -38,11 +42,14 @@ namespace GestaoAlojamento
            
             comboBoxCategoriaFiltro.DataSource = Enum.GetValues(typeof(CategoriaAlojamento));
         }
+        #endregion
+
+        #region Eventos
         /// <summary>
-        /// 
+        /// Pesquisa alojamentos com base na categoria selecionada.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonPesquisar_Click(object sender, EventArgs e)
         {
            
@@ -94,20 +101,20 @@ namespace GestaoAlojamento
             }
         }
         /// <summary>
-        /// 
+        /// Volta para o formulário anterior.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-            private void buttonVoltar_Click(object sender, EventArgs e)
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
+        private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormCriarReserva formCriarReservas = new FormCriarReserva(mainForm);
             mainForm.AbrirFormNoPanel(formCriarReservas);
         }
         /// <summary>
-        /// 
+        /// Reserva o alojamento selecionado.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonReservar_Click(object sender, EventArgs e)
         {
             if (dataGridViewAlojamentos.SelectedRows.Count == 0)
@@ -152,5 +159,6 @@ namespace GestaoAlojamento
         {
 
         }
+        #endregion
     }
 }

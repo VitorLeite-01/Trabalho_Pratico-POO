@@ -14,6 +14,9 @@ namespace GestaoAlojamentoDLL
             public DateTime DataNascimento { get; set; }
             public string Telefone { get; set; }
             public string Email { get; set; }
+        /// <summary>
+        /// Informação formatada do cliente, contendo o ID e o nome.
+        /// </summary>
         public string InfoCompleta
         {
             get
@@ -25,17 +28,17 @@ namespace GestaoAlojamentoDLL
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Construtor padrão para inicializar um cliente sem definir propriedades específicas.
         /// </summary>
         public Cliente() { }
 
         /// <summary>
-        /// 
+        /// Construtor para inicializar um cliente com propriedades especificadas.
         /// </summary>
-        /// <param name="nome"></param>
-        /// <param name="dataNascimento"></param>
-        /// <param name="telefone"></param>
-        /// <param name="email"></param>
+        /// <param name="nome">Nome do cliente.</param>
+        /// <param name="dataNascimento">Data de nascimento do cliente.</param>
+        /// <param name="telefone">Número de telefone do cliente.</param>
+        /// <param name="email">Endereço de e-mail do cliente.</param>
         public Cliente(string nome, DateTime dataNascimento, string telefone, string email)
             : base()
         {

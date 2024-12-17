@@ -7,14 +7,22 @@ namespace GestaoAlojamento
 {
     public partial class FormPrincipal : Form
     {
+        #region Constructors
+        /// <summary>
+        /// Inicializa uma nova instância do formulário principal.
+        /// </summary>
         public FormPrincipal()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Abre um formulário filho no painel principal da aplicação.
         /// </summary>
-        /// <param name="formFilho"></param>
+        /// <param name="formFilho">Formulário a ser aberto.</param>
         public void AbrirFormNoPanel(Form formFilho)
         {
             if (panelConteudo.Controls.Count > 0)
@@ -31,9 +39,9 @@ namespace GestaoAlojamento
             formFilho.Show();
         }
         /// <summary>
-        /// 
+        /// Carrega os clientes a partir de um ficheiro JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de clientes carregados.</returns>
         public List<Cliente> CarregarClientes()
         {
             string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
@@ -47,9 +55,9 @@ namespace GestaoAlojamento
             return new List<Cliente>();
         }
         /// <summary>
-        /// 
+        /// Carrega os alojamentos a partir de um ficheiro JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de alojamentos carregados.</returns>
         public List<Alojamento> CarregarAlojamentos()
         {
             string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
@@ -63,9 +71,9 @@ namespace GestaoAlojamento
             return new List<Alojamento>();
         }
         /// <summary>
-        /// 
+        /// Carrega as reservas a partir de um ficheiro JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de reservas carregadas.</returns>
         public List<Reserva> CarregarReservas()
         {
             string pastaDados = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dados");
@@ -83,10 +91,10 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Fecha a aplicação.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonFechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -97,63 +105,59 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Abre o menu de gestão de clientes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonClientes_Click(object sender, EventArgs e)
         {
             FormMenuClientes formMenuClientes = new FormMenuClientes(this);
             AbrirFormNoPanel(formMenuClientes);
         }
         /// <summary>
-        /// 
+        /// Abre o menu de gestão de alojamentos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonAlojamentos_Click(object sender, EventArgs e)
         {
             FormMenuAlojamentos formMenuAlojamentos = new FormMenuAlojamentos(this);
             AbrirFormNoPanel(formMenuAlojamentos);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void panelConteudo_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Abre o menu de gestão de reservas.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonReservas_Click(object sender, EventArgs e)
         {
             FormMenuReserva formMenuReserva = new FormMenuReserva(this);
             AbrirFormNoPanel(formMenuReserva);
         }
         /// <summary>
-        /// 
+        /// Abre o formulário de Check-In.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonCheckIn_Click(object sender, EventArgs e)
         {
             FormCheckIn formCheckIn = new FormCheckIn();
             AbrirFormNoPanel(formCheckIn);
         }
         /// <summary>
-        /// 
+        /// Abre o formulário de Check-Out.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Fonte do evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonCheckOut_Click(object sender, EventArgs e)
         {
             FormCheckOut formCheckOut = new FormCheckOut(this);
             AbrirFormNoPanel(formCheckOut);
         }
+        #endregion
     }
 }

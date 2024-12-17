@@ -12,18 +12,19 @@ using System.Windows.Forms;
 
 namespace GestaoAlojamento
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public partial class FormCheckOut : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private ReservaService reservaService;
         private AlojamentoService alojamentoService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Construtor do formulário de Check-Out. Inicializa os serviços e carrega as reservas ativas.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Formulário principal da aplicação.</param>
         public FormCheckOut(FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -32,8 +33,11 @@ namespace GestaoAlojamento
             alojamentoService = new AlojamentoService();
             CarregarReservasAtivas();
         }
+        #endregion
+
+        #region Classes Internas
         /// <summary>
-        /// 
+        /// Representa um item da ComboBox contendo texto a apresentar e valor associado.
         /// </summary>
         public class ComboBoxItem
         {
@@ -45,8 +49,11 @@ namespace GestaoAlojamento
                 return Text;
             }
         }
+        #endregion
+
+        #region Métodos 
         /// <summary>
-        /// 
+        /// Carrega todas as reservas com alojamentos ocupados (ativas) e apresenta na ComboBox.
         /// </summary>
         private void CarregarReservasAtivas()
         {
@@ -77,16 +84,17 @@ namespace GestaoAlojamento
                 MessageBox.Show($"Erro ao carregar reservas ativas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        #endregion
+        #region Eventos
         private void FormCheckOut_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento disparado ao clicar no botão de efetuar Check-Out. Finaliza a reserva ativa selecionada.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Argumentos do evento.</param>
         private void buttonEfetuarCheckOut_Click(object sender, EventArgs e)
         {
             if (comboBoxReservas.SelectedItem == null)
@@ -129,5 +137,6 @@ namespace GestaoAlojamento
                 MessageBox.Show($"Erro ao finalizar o check-out: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
     }
 }

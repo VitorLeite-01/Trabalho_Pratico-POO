@@ -16,7 +16,8 @@ namespace FuncoesDLL
         #endregion
         #region Constructors
         /// <summary>
-        /// 
+        /// Construtor da classe AlojamentoService. Inicializa os caminhos para o ficheiro de alojamentos 
+        /// e para o ficheiro de logs. Certifica-se também de que a pasta de dados existe.
         /// </summary>
         public AlojamentoService()
         {
@@ -30,12 +31,12 @@ namespace FuncoesDLL
             caminhoLog = Path.Combine(pastaDados, "logAlojamento.txt");
         }
         #endregion
-        // Validações
+        #region Métodos para Gestão de Alojamentos
         /// <summary>
-        /// 
+        /// Verifica se todos os campos obrigatórios de um alojamento estão preenchidos corretamente.
         /// </summary>
-        /// <param name="alojamento"></param>
-        /// <returns></returns>
+        /// <param name="alojamento">Objeto alojamento a ser validado.</param>
+        /// <returns>True se os campos estiverem corretamente preenchidos; caso contrário, false.</returns>
         public bool CamposPreenchidos(Alojamento alojamento)
         {
             return alojamento.NumeroAlojamento > 99 &&
@@ -44,9 +45,10 @@ namespace FuncoesDLL
                    Enum.IsDefined(typeof(EstadoAlojamento), alojamento.Estado); 
         }
         /// <summary>
-        /// 
+        /// Carrega a lista de alojamentos a partir do ficheiro JSON.
+        /// Caso não existam dados ou ocorra um erro, devolve uma lista vazia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de alojamentos ou uma lista vazia em caso de erro.</returns>
         public List<Alojamento> CarregarAlojamentos()
         {
             try
@@ -79,10 +81,10 @@ namespace FuncoesDLL
             return new List<Alojamento>();
         }
         /// <summary>
-        /// 
+        /// Adiciona um novo alojamento à lista e atualiza o ficheiro JSON com os dados.
         /// </summary>
-        /// <param name="alojamento"></param>
-        /// <returns></returns>
+        /// <param name="alojamento">Objeto alojamento a ser adicionado.</param>
+        /// <returns>True se o alojamento for guardado com sucesso; caso contrário, false.</returns>
         public bool GuardarAlojamento(Alojamento alojamento)
         {
             var alojamentos = CarregarAlojamentos(); 
@@ -107,10 +109,10 @@ namespace FuncoesDLL
             }
         }
         /// <summary>
-        /// 
+        /// Elimina um alojamento existente a partir do seu identificador.
         /// </summary>
-        /// <param name="alojamentoId"></param>
-        /// <returns></returns>
+        /// <param name="alojamentoId">Identificador único do alojamento a ser removido.</param>
+        /// <returns>True se o alojamento for eliminado com sucesso; caso contrário, false.</returns>
         public bool EliminarAlojamento(int alojamentoId)
         {
             var alojamentos = CarregarAlojamentos();
@@ -133,10 +135,10 @@ namespace FuncoesDLL
             return false;
         }
         /// <summary>
-        /// 
+        /// Verifica se existe algum alojamento com o número indicado.
         /// </summary>
-        /// <param name="numeroAlojamento"></param>
-        /// <returns></returns>
+        /// <param name="numeroAlojamento">Número do alojamento a verificar.</param>
+        /// <returns>True se o número do alojamento existir; caso contrário, false.</returns>
         public bool NumeroAlojamentoExiste(int numeroAlojamento)
         {
             
@@ -146,27 +148,27 @@ namespace FuncoesDLL
             return alojamentos.Any(a => a.NumeroAlojamento == numeroAlojamento);
         }
         /// <summary>
-        /// 
+        /// Gera uma lista de alojamentos formatada para exibição.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista com o formato "ID | Número do Alojamento".</returns>
         public List<string> CarregarListaFormatada()
         {
             var alojamentos = CarregarAlojamentos();
             return alojamentos.Select(a => $"{a.Id} | {a.NumeroAlojamento}").ToList();
         }
         /// <summary>
-        /// 
+        /// Regista uma mensagem de erro no ficheiro de logs.
         /// </summary>
-        /// <param name="mensagem"></param>
+        /// <param name="mensagem">Mensagem de erro a ser registada.</param>
         private void RegistarErro(string mensagem)
         {
             string conteudo = $"{DateTime.Now}: {mensagem}{Environment.NewLine}";
             File.AppendAllText(caminhoLog, conteudo);
         }
         /// <summary>
-        /// 
+        /// Atualiza o estado de um alojamento específico na lista e no ficheiro JSON.
         /// </summary>
-        /// <param name="alojamentoAtualizado"></param>
+        /// <param name="alojamentoAtualizado">Objeto alojamento com os novos dados a serem aplicados.</param>
         public void AtualizarAlojamento(Alojamento alojamentoAtualizado)
         {
             var alojamentos = CarregarAlojamentos();
@@ -181,11 +183,11 @@ namespace FuncoesDLL
             }
         }
         /// <summary>
-        /// 
+        /// Obtém uma lista de alojamentos disponíveis para um intervalo de datas.
         /// </summary>
-        /// <param name="dataCheckIn"></param>
-        /// <param name="dataCheckOut"></param>
-        /// <returns></returns>
+        /// <param name="dataCheckIn">Data de entrada no alojamento.</param>
+        /// <param name="dataCheckOut">Data de saída do alojamento.</param>
+        /// <returns>Lista de alojamentos disponíveis.</returns>
         public List<Alojamento> AlojamentosDisponiveis(DateTime dataCheckIn, DateTime dataCheckOut)
         {
             var alojamentos = CarregarAlojamentos();
@@ -201,12 +203,12 @@ namespace FuncoesDLL
             ).ToList();
         }
         /// <summary>
-        /// 
+        /// Filtra os alojamentos disponíveis por categoria num intervalo de datas.
         /// </summary>
-        /// <param name="dataCheckIn"></param>
-        /// <param name="dataCheckOut"></param>
-        /// <param name="categoria"></param>
-        /// <returns></returns>
+        /// <param name="dataCheckIn">Data de entrada no alojamento.</param>
+        /// <param name="dataCheckOut">Data de saída do alojamento.</param>
+        /// <param name="categoria">Categoria do alojamento desejado.</param>
+        /// <returns>Lista de alojamentos disponíveis da categoria especificada.</returns>
         public List<Alojamento> FiltrarAlojamentosDisponiveis(DateTime dataCheckIn, DateTime dataCheckOut, CategoriaAlojamento categoria)
         {
             return AlojamentosDisponiveis(dataCheckIn, dataCheckOut)
@@ -214,11 +216,11 @@ namespace FuncoesDLL
                 .ToList();
         }
         /// <summary>
-        /// 
+        /// Atualiza o estado de um alojamento com base no identificador.
         /// </summary>
-        /// <param name="alojamentoId"></param>
-        /// <param name="novoEstado"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="alojamentoId">Identificador do alojamento a ser atualizado.</param>
+        /// <param name="novoEstado">Novo estado a ser atribuído ao alojamento.</param>
+        /// <exception cref="Exception">Lança uma exceção caso o alojamento não seja encontrado.</exception>
         public void AtualizarEstadoAlojamento(int alojamentoId, EstadoAlojamento novoEstado)
         {
             var alojamentos = CarregarAlojamentos();
@@ -238,5 +240,6 @@ namespace FuncoesDLL
                 throw new Exception("Alojamento não encontrado.");
             }
         }
+        #endregion
     }
 }

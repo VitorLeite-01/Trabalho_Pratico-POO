@@ -13,12 +13,16 @@ namespace GestaoAlojamento
 {
     public partial class FormEliminarCliente : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private ClienteService clienteService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de eliminação de cliente.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Referência ao formulário principal.</param>
         public FormEliminarCliente(FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -26,9 +30,11 @@ namespace GestaoAlojamento
             CarregarListaClientes(); 
             this.mainForm = mainForm;
         }
+        #endregion
 
+        #region Métodos
         /// <summary>
-        /// 
+        /// Carrega a lista de clientes disponíveis na ComboBox.
         /// </summary>
         private void CarregarListaClientes()
         {
@@ -45,7 +51,9 @@ namespace GestaoAlojamento
                 this.Close();
             }
         }
+        #endregion
 
+        #region Eventos
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -56,20 +64,22 @@ namespace GestaoAlojamento
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão Voltar.
+        /// Retorna ao menu de clientes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuClientes formMenuClientes = new FormMenuClientes(mainForm);
             mainForm.AbrirFormNoPanel(formMenuClientes);
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão Eliminar.
+        /// Elimina o cliente selecionado.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -80,7 +90,7 @@ namespace GestaoAlojamento
                     return;
                 }
 
-                int clienteId = int.Parse(comboBoxClientes.SelectedItem.ToString().Split('-')[0].Trim());
+                int clienteId = int.Parse(comboBoxClientes.SelectedItem.ToString().Split('|')[0].Trim());
 
                 var confirmacao = MessageBox.Show("Tem certeza de que deseja eliminar o cliente selecionado?",
                                                   "Confirmação",
@@ -107,5 +117,6 @@ namespace GestaoAlojamento
                 MessageBox.Show($"Erro ao eliminar cliente: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
     }
 }

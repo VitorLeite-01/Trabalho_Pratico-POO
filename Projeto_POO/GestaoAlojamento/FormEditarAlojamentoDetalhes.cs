@@ -15,17 +15,21 @@ namespace GestaoAlojamento
 {
     public partial class FormEditarAlojamentoDetalhes : Form
     {
+        #region Properties
         private Alojamento alojamento;
         private AlojamentoService alojamentoService;
         private FormEditarAlojamento formEditarAlojamento;
         private FormPrincipal mainForm;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Inicializa uma nova instância do formulário de edição de detalhes.
         /// </summary>
-        /// <param name="alojamento"></param>
-        /// <param name="alojamentoService"></param>
-        /// <param name="formEditarAlojamento"></param>
-        /// <param name="mainForm"></param>
+        /// <param name="alojamento">Dados do alojamento selecionado.</param>
+        /// <param name="alojamentoService">Serviço do alojamento.</param>
+        /// <param name="formEditarAlojamento">Formulário pai.</param>
+        /// <param name="mainForm">Referência ao formulário principal.</param>
         public FormEditarAlojamentoDetalhes(Alojamento alojamento, AlojamentoService alojamentoService, FormEditarAlojamento formEditarAlojamento, FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -35,8 +39,11 @@ namespace GestaoAlojamento
             this.mainForm = mainForm;
             PreencherDados();
         }
+        #endregion
+
+        #region Métodos
         /// <summary>
-        /// 
+        /// Preenche os campos com os dados atuais do alojamento.
         /// </summary>
         private void PreencherDados()
         {
@@ -48,16 +55,19 @@ namespace GestaoAlojamento
             textBoxPreco.Text = alojamento.PrecoPorNoite.ToString("F2");
             comboBoxEstado.SelectedItem = alojamento.Estado;
         }
+        #endregion
 
+        #region Eventos
         private void FormEditarAlojamentoDetalhes_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Guardar.
+        /// Valida e guarda os dados editados do alojamento.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             alojamento.NumeroAlojamento = int.Parse(textBoxNr.Text.Trim());
@@ -98,10 +108,11 @@ namespace GestaoAlojamento
             }
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao pressionar o botão Cancelar.
+        /// Retorna ao formulário pai de edição de alojamento.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Dados do evento.</param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             mainForm.AbrirFormNoPanel(formEditarAlojamento);
@@ -111,5 +122,6 @@ namespace GestaoAlojamento
         {
 
         }
+        #endregion
     }
 }

@@ -15,12 +15,16 @@ namespace GestaoAlojamento
 {
     public partial class FormCriarAlojamento : Form
     {
+        #region Properties
         private FormPrincipal mainForm;
         private AlojamentoService alojamentoService;
+        #endregion
+
+        #region Constructors
         /// <summary>
-        /// 
+        /// Construtor do formulário para a criação de alojamentos.
         /// </summary>
-        /// <param name="mainForm"></param>
+        /// <param name="mainForm">Instância do formulário principal da aplicação.</param>
         public FormCriarAlojamento(FormPrincipal mainForm)
         {
             InitializeComponent();
@@ -31,26 +35,28 @@ namespace GestaoAlojamento
             comboBoxCategoria.DataSource = Enum.GetValues(typeof(CategoriaAlojamento));
             comboBoxCategoria.SelectedItem = CategoriaAlojamento.Single_Room_Standard;
         }
+        #endregion
 
+        #region Eventos
         private void FormCriarAlojamento_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão "Voltar". Retorna ao menu de alojamentos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Argumentos do evento.</param>
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FormMenuAlojamentos formMenuAlojamentos = new FormMenuAlojamentos(mainForm);
             mainForm.AbrirFormNoPanel(formMenuAlojamentos);
         }
         /// <summary>
-        /// 
+        /// Evento acionado ao clicar no botão "Guardar". Valida os dados e regista um novo alojamento.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objeto que acionou o evento.</param>
+        /// <param name="e">Argumentos do evento.</param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             var novoAlojamento = new Alojamento
@@ -91,5 +97,6 @@ namespace GestaoAlojamento
         {
 
         }
+        #endregion
     }
 }

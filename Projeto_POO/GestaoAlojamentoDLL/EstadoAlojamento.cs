@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace GestaoAlojamentoDLL
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public enum EstadoAlojamento
     {
         Disponivel,
