@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoAlojamentoDLL", "Gest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncoesDLL", "FuncoesDLL\FuncoesDLL.csproj", "{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoAlojamento.Tests", "GestaoAlojamento.Tests\GestaoAlojamento.Tests.csproj", "{2F5A29A9-01F5-41C9-A476-79BBCAE26E53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18203C9C-0AF2-43D0-8214-48F0FDAEE33F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F5A29A9-01F5-41C9-A476-79BBCAE26E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F5A29A9-01F5-41C9-A476-79BBCAE26E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F5A29A9-01F5-41C9-A476-79BBCAE26E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F5A29A9-01F5-41C9-A476-79BBCAE26E53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
